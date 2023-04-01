@@ -19,7 +19,6 @@ pygame - 2.3.0
 Instructions for setting up project
 ## How to Run
 ```
-python
 py main.py
 ```
 ## Resources
