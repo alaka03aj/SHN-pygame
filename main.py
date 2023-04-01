@@ -44,8 +44,17 @@ font = pygame.font.SysFont(None,30)
 while running:
     
     screen.blit(bg, (0, 0))
-    screen.blit(heart_1, (0, 0))
     screen.blit(enemy, (enemy_x, enemy_y))
+
+    if lives == 3:
+        screen.blit(heart_1, (0, 0))
+    if lives == 2:
+        screen.blit(heart_2, (0, 0))
+    if lives == 1:
+        screen.blit(heart_3, (0, 0))
+    if lives == 0:
+        screen.blit(dead, (0, 0))
+
 
     if (enemy_y > height):      #if enemy falls down without hitting blob
         enemy_y = -500          #offset height
