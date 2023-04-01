@@ -71,7 +71,7 @@ while running:
             gameover=True
             screen.blit(dead, (0, 0))
             text = font.render("GAME OVER", True, (255,255,255))
-            screen.blit(text, (width/2,height/2))
+            screen.blit(text, (width/2 - 64,height/2))
             pygame.display.update()
 
             
