@@ -2,7 +2,7 @@ import os
 import pygame
 from pygame.locals import *
 import random
-import time
+import sys
 
 #initialize pygame
 pygame.init()
@@ -55,18 +55,21 @@ while running:
     if lives == 1:
         screen.blit(heart_3, (0, 0))
     if lives == 0:
-        while(True):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT or event.key == pygame.K_ESCAPE:
+                    pygame.quit()
+                    sys.exit()
+                    
             gameover=True
-            game_over_time = time.time()
             screen.blit(dead, (0, 0))
             text = font.render("GAME OVER", True, (255,255,255))
-            screen.blit(text, (50,50))
+            screen.blit(text, (width/2,height/2))
             pygame.display.update()
-            if time.time() - game_over_time > 5:
-                running=False
+
             
     if (enemy_y > height):
-        count+=1      #if enemy falls down without hitting blob
+        count+=1                #if enemy falls down without hitting blob
         enemy_y = -500          #offset height
         enemy_x = random.randint(10, width - enemy_width)      #generate random width for next spawn
     
