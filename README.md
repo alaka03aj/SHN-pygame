@@ -21,8 +21,8 @@ The program uses Pygame to handle the game loop, graphics, and user input. The g
 ## Link to product walkthrough
 [Walkthrough](https://www.loom.com/share/1ad1cd92a5aa4cabbf18b4cecf05ad79)
 ## How it Works ?
-1. Explaining the working of project
-2. Embed video of project demo
+1. The blob has the ability to move left and right. The goal is to not get in contact with the spikes that has the power to reduce it's health. The blob has 3 lives. The game stops when it runs out of life.
+2. [Walkthrough](https://www.loom.com/share/1ad1cd92a5aa4cabbf18b4cecf05ad79)
 ## Libraries used
 pygame - 2.3.0
 ## How to configure
