@@ -17,9 +17,21 @@ Long Description about project. This project do that. This project is awesome...
 pygame - 2.3.0
 ## How to configure
 Instructions for setting up project
-## How to Run
-Instructions for running
+1. Fork the repository
+2. Clone the repository
+```
+git clone [forked-repo-link]
+```
+3. Run the program
+```
+py main.py
+```
+Note: Python and pygame must be installed to run this game!
 
+## How to Run
+```
+py main.py
+```
 ## Resources
 1. https://canberragpn.github.io/static/doc/PygameCheatSheet.pdf
 2. https://realpython.com/pygame-a-primer/
