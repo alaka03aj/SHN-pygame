@@ -15,13 +15,13 @@ pygame.display.set_caption("Escape!")
 
 #load images
 bg = pygame.image.load(os.path.join("Assets","bg.png"))
-blob1 = pygame.transform.scale(pygame.image.load(os.path.join("Assets","blob_rest.png")), (128,128))
+blob2 = blob1 = pygame.transform.scale(pygame.image.load(os.path.join("Assets","blob_rest.png")), (128,128))
 blob2 = pygame.transform.scale(pygame.image.load(os.path.join("Assets","blob_moving.png")), (128,128))
 enemy = pygame.transform.scale(pygame.image.load(os.path.join("Assets","enemy.png")), (64,64))
-heart_1 = pygame.image.load(os.path.join("Assets","heart_1.png"))
-heart_2 = pygame.image.load(os.path.join("Assets","heart_2.png"))
-heart_3 = pygame.image.load(os.path.join("Assets","heart_3.png"))
-dead = pygame.image.load(os.path.join("Assets","heart_4.png"))
+heart_1 = pygame.transform.scale(pygame.image.load(os.path.join("Assets","heart_1.png")), (64,64))
+heart_2 = pygame.transform.scale(pygame.image.load(os.path.join("Assets","heart_2.png")), (64,64))
+heart_3 = pygame.transform.scale(pygame.image.load(os.path.join("Assets","heart_3.png")), (64,64))
+dead = pygame.transform.scale(pygame.image.load(os.path.join("Assets","heart_4.png")), (64,64))
 
 #game variables
 blob_x = width/2
@@ -41,6 +41,13 @@ score = 0
 font = pygame.font.SysFont(None,30)
 gameover=False
 gameover_time=0
+player = blob1
+
+#collision variables
+player_hitbox = player.get_rect()
+player_hitbox.x = blob_x
+player_hitbox.y = blob_y
+enemy_hitbox = enemy.get_rect()
 
 
 while running:
@@ -71,27 +78,41 @@ while running:
     if (enemy_y > height):
         count+=1                #if enemy falls down without hitting blob
         enemy_y = -500          #offset height
-        enemy_x = random.randint(10, width - enemy_width)      #generate random width for next spawn
-    
-    if(count == 3):
-        lives=0
+        enemy_x = random.randint(10, width - enemy_width)     #generate random width for next spawn
+        enemy_hitbox.x = enemy_x
+
     #getting key interaction from user
     keys = pygame.key.get_pressed()
     if (keys[pygame.K_LEFT] or keys[pygame.K_a]) and blob_x > 0:
         blob_x -= blob_speed
+        player_hitbox.x = blob_x
     if (keys[pygame.K_RIGHT] or keys[pygame.K_d]) and blob_x < width - blob_width:
         blob_x += blob_speed
+        player_hitbox.x = blob_x
     if keys[pygame.K_LEFT] or keys[pygame.K_RIGHT] or keys[pygame.K_a] or keys[pygame.K_d]:
         screen.blit(blob2, (blob_x, blob_y))
+        player = blob2
     else:
         screen.blit(blob1, (blob_x, blob_y))
+        player = blob1
+
+    pygame.draw.rect(screen,(255,0,0),player_hitbox,3)
+    pygame.draw.rect(screen,(255,0,0),enemy_hitbox,3)
+
+    #collision control block
+    if player_hitbox.colliderect(enemy_hitbox):
+        lives-=1
+        enemy_y = 500
+        
 
     #checking for exit condition
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
     
-    enemy_y+=0.23
+    enemy_y+=0.1
+    enemy_hitbox.y = enemy_y
+
     pygame.display.update()
 
 pygame.quit()
