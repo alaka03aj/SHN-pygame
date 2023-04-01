@@ -38,7 +38,8 @@ level = 1
 count = 0
 lives = 3
 score = 0
-font = pygame.font.SysFont(None,50)
+game_over_font = pygame.font.SysFont(None,50)
+font = pygame.font.SysFont(None,35)
 gameover=False
 gameover_time=0
 player = blob1
@@ -72,10 +73,10 @@ while running:
                     sys.exit()
                     
             gameover=True
-            text = font.render("GAME OVER", True, (255,255,255))
+            text = game_over_font.render("GAME OVER", True, (0,0,0))
             screen.blit(text, (width/2 - 110,height/2))
-            text = font.render(score_text, True, (255,255,255))
-            screen.blit(text, (width - 185,10))
+            text = font.render(score_text, True, (0,0,0))
+            screen.blit(text, (width - 120,15))
             pygame.display.update()
 
             
@@ -103,9 +104,9 @@ while running:
                         sys.exit()
                         
                 gameover=True
-                text = font.render("YOU WIN!!", True, (255,255,255))
+                text = font.render("YOU WIN!!", True, (0,0,0))
                 screen.blit(text, (width/2 - 110,height/2))
-                text = font.render(score_text, True, (255,255,255))
+                text = font.render(score_text, True, (0,0,0))
                 screen.blit(text, (width - 185,10))
                 pygame.display.update()
 
@@ -125,8 +126,8 @@ while running:
         player = blob1
 
     #levels
-    text = font.render(score_text, True, (255,255,255))
-    screen.blit(text, (width - 185,10))
+    text = font.render(score_text, True, (0,0,0))
+    screen.blit(text, (width - 120,15))
     if level == 1:
         enemy_y+=0.1
         enemy_hitbox.y = enemy_y
