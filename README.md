@@ -3,7 +3,17 @@
 
 
 # Project Name
-Long Description about project. This project do that. This project is awesome...
+ESCAPE!!
+
+The program is a simple Pygame game in which the player character must avoid enemy characters to stay alive. The game window displays a score and the number of lives remaining.
+
+The player character is represented as a rectangle that can be moved horizontally and vertically using the arrow keys or WASD keys. The enemies are also represented as rectangles that move across the screen at a constant speed.
+
+The game loop updates the positions of the player character and the enemies on the screen and checks for collisions between them. If the player character collides with an enemy, the player loses a life and the character's position is reset to the center of the screen.
+
+The game ends when the player loses all their lives. When the game ends, a "Game Over" message is displayed on the screen for 5 seconds before quitting the game.
+
+The program uses Pygame to handle the game loop, graphics, and user input. The game score and lives are displayed on the screen using text objects. The program also uses sound effects to indicate when the player loses a life or collides with an enemy.
 ## Team members
 1. Vishal Unni [https://github.com/VISHALUNNI]
 2. Adithya S Prabhu [https://github.com/TectonicSteak]
