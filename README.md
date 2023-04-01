@@ -19,7 +19,7 @@ The program uses Pygame to handle the game loop, graphics, and user input. The g
 2. Adithya S Prabhu [https://github.com/TectonicSteak]
 3. Alaka A J [https://github.com/alaka03aj]
 ## Link to product walkthrough
-[link to video]
+[Walkthrough](https://www.loom.com/share/1ad1cd92a5aa4cabbf18b4cecf05ad79)
 ## How it Works ?
 1. Explaining the working of project
 2. Embed video of project demo
