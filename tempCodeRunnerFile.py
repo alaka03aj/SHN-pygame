@@ -1,0 +1,1 @@
+screen.blit(heart_1, (0, 0))
