@@ -1,1 +1,0 @@
-pygame.time.set_timer(running=False,5000)
