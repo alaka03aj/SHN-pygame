@@ -31,6 +31,8 @@ enemy_x = 0
 enemy_y = 0
 enemy_width = 64
 enemy_height = 64
+level = 0
+count = 0
 lives = 3
 score = 0
 font = pygame.font.SysFont(None,30)
@@ -43,9 +45,13 @@ while running:
     screen.blit(heart, (0, 0))
     screen.blit(enemy, (enemy_x, enemy_y))
 
-    if (enemy_y > height):
-        enemy_y = -500
-        enemy_x = random.randint(10, width - enemy_width)
+    count += 1      #as count reaches some value, increment value of level which will increase speed of enemy
+
+    if (enemy_y > height):      #if enemy falls down without hitting blob
+        enemy_y = -500          #offset height
+        enemy_x = random.randint(10, width - enemy_width)       #generate random width for next spawn
+    
+    #getting key interaction from user
     keys = pygame.key.get_pressed()
     if (keys[pygame.K_LEFT] or keys[pygame.K_a]) and blob_x > 0:
         blob_x -= blob_speed
@@ -55,9 +61,13 @@ while running:
         screen.blit(blob2, (blob_x, blob_y))
     else:
         screen.blit(blob1, (blob_x, blob_y))
+
+    #checking for exit condition
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
+    
+    
     enemy_y+=0.1
     pygame.display.update()
 
