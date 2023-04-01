@@ -38,9 +38,14 @@ font = pygame.font.SysFont(None,30)
 
 
 while running:
+    
     screen.blit(bg, (0, 0))
     screen.blit(heart, (0, 0))
-    screen.blit(enemy, (50, 0))
+    screen.blit(enemy, (enemy_x, enemy_y))
+
+    if (enemy_y > height):
+        enemy_y = -500
+        enemy_x = random.randint(10, width - enemy_width)
     keys = pygame.key.get_pressed()
     if (keys[pygame.K_LEFT] or keys[pygame.K_a]) and blob_x > 0:
         blob_x -= blob_speed
@@ -53,6 +58,7 @@ while running:
     for event in pygame.event.get():
         if event.type == QUIT:
             running = False
+    enemy_y+=0.1
     pygame.display.update()
 
 pygame.quit()
