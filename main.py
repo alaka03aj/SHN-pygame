@@ -55,7 +55,6 @@ while running:
     if lives == 0:
         screen.blit(dead, (0, 0))
 
-
     if (enemy_y > height):      #if enemy falls down without hitting blob
         enemy_y = -500          #offset height
         enemy_x = random.randint(10, width - enemy_width)      #generate random width for next spawn
