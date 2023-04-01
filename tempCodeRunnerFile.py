@@ -1,1 +1,1 @@
-screen.blit(heart_1, (0, 0))
+pygame.time.set_timer(running=False,5000)

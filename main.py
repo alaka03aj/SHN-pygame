@@ -2,6 +2,7 @@ import os
 import pygame
 from pygame.locals import *
 import random
+import time
 
 #initialize pygame
 pygame.init()
@@ -38,7 +39,8 @@ count = 0
 lives = 3
 score = 0
 font = pygame.font.SysFont(None,30)
-
+gameover=False
+gameover_time=0
 
 
 while running:
@@ -53,14 +55,23 @@ while running:
     if lives == 1:
         screen.blit(heart_3, (0, 0))
     if lives == 0:
-        screen.blit(dead, (0, 0))
-
-
-    if (enemy_y > height):      #if enemy falls down without hitting blob
+        while(True):
+            gameover=True
+            game_over_time = time.time()
+            screen.blit(dead, (0, 0))
+            text = font.render("GAME OVER", True, (255,255,255))
+            screen.blit(text, (50,50))
+            pygame.display.update()
+            if time.time() - game_over_time > 5:
+                running=False
+            
+    if (enemy_y > height):
+        count+=1      #if enemy falls down without hitting blob
         enemy_y = -500          #offset height
         enemy_x = random.randint(10, width - enemy_width)      #generate random width for next spawn
     
-
+    if(count == 3):
+        lives=0
     #getting key interaction from user
     keys = pygame.key.get_pressed()
     if (keys[pygame.K_LEFT] or keys[pygame.K_a]) and blob_x > 0:
@@ -77,7 +88,7 @@ while running:
         if event.type == QUIT:
             running = False
     
-    enemy_y+=0.1
+    enemy_y+=0.23
     pygame.display.update()
-    
+
 pygame.quit()
