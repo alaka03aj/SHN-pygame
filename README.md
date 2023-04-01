@@ -18,8 +18,10 @@ pygame - 2.3.0
 ## How to configure
 Instructions for setting up project
 ## How to Run
-Instructions for running
-
+```
+python
+py main.py
+```
 ## Resources
 1. https://canberragpn.github.io/static/doc/PygameCheatSheet.pdf
 2. https://realpython.com/pygame-a-primer/
